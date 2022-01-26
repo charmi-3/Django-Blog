@@ -1,0 +1,17 @@
+{% extends 'app1/base.html' %}
+{% block content %}
+<h1>Blog</h1>
+<ul style="list-style-type: none;">
+{% for pos in object_list %}
+  <li style="border: 2px solid rgba(0, 0, 0, 0.308);border-radius: 5px;"><a style="text-decoration: none;" href="{% url 'detail_view' pos.pk %}">{{pos.title}}  </a> 
+    <a style="text-decoration: none;"href="{% url 'catdetail_view' pos.category %}" >({{pos.category}})</a> {{pos.date}} - {{pos.author}} 
+    {% if user.is_authenticated %}
+     {% if pos.author.id == user.id %}
+    <a style="text-decoration: none;"href="{% url 'edit_view' pos.pk %}">Edit</a>
+    - <a style="text-decoration: none;"href="{% url 'delete_view' pos.pk %}">Delete</a>
+    {% endif %}
+     {% endif %}<br>
+  {{pos.body}}</li><br>
+{% endfor %}
+</ul>
+{% endblock %}

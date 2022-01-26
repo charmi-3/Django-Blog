@@ -1,0 +1,10 @@
+{% extends 'app1/base.html' %}
+{% block content %}
+<h2>Sign Up</h2><br>
+<div class="mb-3">
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <Button class="btn btn-secondary">Sign Up</Button>
+</form></div>
+{% endblock %}

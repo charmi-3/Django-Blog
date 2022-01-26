@@ -1,0 +1,17 @@
+{% extends 'app1/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<h2>Add Post</h2><br>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <Button class="btn btn-secondary">Save</Button>
+</form>
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("user").value = name;
+</script>
+{% else %}
+<h2>Oops! You are not logged in</h2>
+{% endif %}
+{% endblock %}

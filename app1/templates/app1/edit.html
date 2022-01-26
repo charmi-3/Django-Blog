@@ -1,0 +1,19 @@
+{% extends 'app1/base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
+<h2>Edit Post</h2><br>
+<div class="mb-3">
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <Button class="btn btn-secondary">Save</Button>
+</form></div>
+{% else %}
+<h1>Oops! You didnt make this post...</h1>
+{% endif %}
+{% else %}
+<h1>Oops! You are not logged in</h1>
+{% endif %}
+{% endblock %}
